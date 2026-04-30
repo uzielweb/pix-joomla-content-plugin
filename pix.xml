@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="content" method="upgrade">
+    <name>plg_content_pix</name>
+    <author>Uziel Almeida Oliveira</author>
+    <creationDate>April 2026</creationDate>
+    <copyright>(C) 2026 Uziel Almeida Oliveira</copyright>
+    <license>GNU GPL v2</license>
+    <authorEmail>contato@pontomega.com.br</authorEmail>
+    <authorUrl>www.pontomega.com.br</authorUrl>
+    <version>1.0.2</version>
+    <description>PLG_CONTENT_PIX_DESCRIPTION</description>
+    <namespace>PontoMega\Plugin\Content\Pix</namespace>
+    <files>
+        <folder plugin="pix">services</folder>
+        <folder>src</folder>
+    </files>
+    <languages>
+        <language tag="pt-BR">language/pt-BR/plg_content_pix.ini</language>
+        <language tag="pt-BR">language/pt-BR/plg_content_pix.sys.ini</language>
+        <language tag="en-GB">language/en-GB/plg_content_pix.ini</language>
+        <language tag="en-GB">language/en-GB/plg_content_pix.sys.ini</language>
+    </languages>
+    <media destination="plg_content_pix" folder="media">
+        <folder>js</folder>
+    </media>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="pix_key" type="text" label="PLG_CONTENT_PIX_FIELD_PIX_KEY_LABEL" description="PLG_CONTENT_PIX_FIELD_PIX_KEY_DESC" required="true" />
+                <field name="merchant_name" type="text" label="PLG_CONTENT_PIX_FIELD_MERCHANT_NAME_LABEL" description="PLG_CONTENT_PIX_FIELD_MERCHANT_NAME_DESC" />
+                <field name="merchant_city" type="text" label="PLG_CONTENT_PIX_FIELD_MERCHANT_CITY_LABEL" description="PLG_CONTENT_PIX_FIELD_MERCHANT_CITY_DESC" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
