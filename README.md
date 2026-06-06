@@ -1,48 +1,77 @@
 # PIX - Joomla Content Plugin
 
-A modern, standalone PIX payment integration for Joomla 4 and 5. This plugin allows you to easily render PIX QR codes within your articles using a simple shortcode syntax.
+[![Joomla Version](https://img.shields.io/badge/Joomla-4.x%20%7C%205.x%20%7C%206.x-blue.svg?style=flat-square)](https://joomla.org)
+[![License](https://img.shields.io/badge/license-GPL--2.0-green.svg?style=flat-square)](LICENSE)
+[![Latest Release](https://img.shields.io/badge/release-1.0.3-orange.svg?style=flat-square)](https://github.com/uzielweb/plg_content_pix/releases)
 
-## Features
+A modern, standalone, and high-performance PIX payment shortcode integration for **Joomla 4, 5, and 6**. This plugin dynamically generates secure static PIX QR Codes directly inside your articles using a clean shortcode syntax.
 
-- **Local Generation**: No external APIs used for QR code generation. Everything happens in the browser via JavaScript.
-- **Strict Compliance**: Generates PIX payloads following the BCB (Banco Central do Brasil) specifications (EMV BRCode).
-- **Customizable**: Set your PIX key, merchant name, and city in the plugin parameters.
-- **Receipt Integration**: Includes transaction messages in the bank receipt (Field 26-02).
-- **Responsive Design**: Premium UI with "Copy PIX Code" functionality included.
+---
 
-## Installation
+## 🚀 Key Features
 
-1. Download the repository as a ZIP.
-2. In your Joomla Administrator, go to **System > Install > Extensions**.
-3. Upload the ZIP file.
-4. Go to **System > Manage > Plugins**, search for "Content - Pix" and enable it.
+- **Local & Offline Generation**: No external APIs or remote servers are called to generate the QR Code. Everything is computed securely in the browser using JavaScript.
+- **Strict Specifications Compliance**: Generates compliant BRCode payloads following the Banco Central do Brasil (BCB) standards.
+- **Joomla Web Asset Manager**: Assets (JS/CSS) are cleanly registered and loaded using Joomla's modern asset architecture.
+- **Copy-to-Clipboard**: Premium UI with an integrated "Copy PIX Code" button for better user experience.
+- **Receipt Identifiers**: Allows attaching description messages directly into the bank payment receipt field (EMV Field 26-02).
 
-## Usage
+---
 
-Insert the following shortcode anywhere in your articles:
+## 📦 Installation
 
+1. Download the latest release package from the [Releases](https://github.com/uzielweb/plg_content_pix/releases) page.
+2. In your Joomla Administrator panel, navigate to **System > Install > Extensions**.
+3. Upload the downloaded ZIP package.
+4. Go to **System > Manage > Plugins**, search for **"PIX - Joomla Content Plugin"** (under the `content` group) and enable it.
+
+---
+
+## 🛠️ Configuration
+
+Configure the global parameters inside the plugin manager:
+
+| Parameter | Type | Required | Description |
+| :--- | :--- | :---: | :--- |
+| **PIX Key** | Text | **Yes** | Your PIX Key (E-mail, CPF, CNPJ, Phone, or Random Key). |
+| **Merchant Name** | Text | No | Beneficiary name displayed to the buyer (Max 25 characters). |
+| **Merchant City** | Text | No | The city where the transaction is processed (Max 15 characters). |
+
+---
+
+## 📖 How to Use
+
+Insert the shortcode anywhere inside your Joomla articles or custom modules using the following syntax:
+
+```text
+{pix:CURRENCY|AMOUNT|MESSAGE}
 ```
-{pix:MOEDA|VALOR|MENSAGEM}
-```
 
-Example:
-```
-{pix:BRL|890.00|Relogio Titanium}
-```
+### Examples:
 
-## Configuration
+- **Standard BRL Payment**:
+  ```text
+  {pix:BRL|890.00|Relogio Titanium}
+  ```
+- **USD equivalent or other text description**:
+  ```text
+  {pix:BRL|45.90|Inscricao Curso}
+  ```
 
-In the plugin settings, configure:
-- **PIX Key**: Your email, phone, CPF/CNPJ, or random key.
-- **Merchant Name**: Your name or your company's name.
-- **Merchant City**: Your city.
+---
 
-## Credits
+## 🎨 UI Customization
 
-- **Author**: Uziel Almeida Oliveira
-- **Contact**: contato@pontomega.com.br
-- **Website**: [www.pontomega.com.br](http://www.pontomega.com.br)
+The plugin uses clean CSS classes which can be customized in your template style sheets:
 
-## License
+- `.pontomega-pix-container` - Main widget wrapper.
+- `.pontomega-pix-title` - Title text displaying the formatted amount.
+- `.pontomega-pix-description` - Description/Message text.
+- `.pontomega-pix-qrcode` - QR Code container.
+- `.pontomega-pix-button` - Copy-to-clipboard button container.
 
-GNU General Public License v2.0
+---
+
+## 📄 License
+
+This project is licensed under the **GNU General Public License v2.0**.
