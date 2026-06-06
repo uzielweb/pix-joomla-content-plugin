@@ -259,7 +259,9 @@
                     <h2 class="font-outfit fw-bold mb-4">Guia Rápido de Uso</h2>
                     
                     <h4 class="font-outfit mt-4 text-success"><i class="fa-solid fa-circle-check me-2"></i>Sintaxe Básica</h4>
-                    <p class="text-muted">Adicione a tag abaixo em qualquer artigo ou módulo personalizado do Joomla:</p>
+                    <p class="text-muted">Adicione a tag abaixo em qualquer artigo ou módulo personalizado do Joomla (a moeda BRL é o padrão e tornou-se opcional):</p>
+                    <pre><code>{pix:VALOR|IDENTIFICADOR}</code></pre>
+                    <p class="text-muted">Ou explicitando a moeda:</p>
                     <pre><code>{pix:MOEDA|VALOR|IDENTIFICADOR}</code></pre>
                     
                     <h4 class="font-outfit mt-4 text-success"><i class="fa-solid fa-circle-info me-2"></i>Parâmetros da Tag</h4>
@@ -274,7 +276,7 @@
                         <tbody>
                             <tr>
                                 <td><code>MOEDA</code></td>
-                                <td>Sempre use <code>BRL</code> para pagamentos PIX.</td>
+                                <td>Opcional. A moeda do pagamento. Caso não seja informada, assume <code>BRL</code> como padrão.</td>
                                 <td><code>BRL</code></td>
                             </tr>
                             <tr>
