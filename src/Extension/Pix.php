@@ -9,6 +9,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\Event\SubscriberInterface;
 
 class Pix extends CMSPlugin implements SubscriberInterface {
+    protected $autoloadLanguage = true;
     
     public static function getSubscribedEvents(): array {
         return [
