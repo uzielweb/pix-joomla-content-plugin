@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIX - Joomla Content Plugin | Documentação e Simulador</title>
+    <title>PIX - Joomla Content Plugin | Documentation and Simulator</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,10 +21,6 @@
             --card-bg: #111827;
             --text-muted: #cbd5e1;
             --border-color: #1f2937;
-        }
-
-        .text-muted {
-            color: var(--text-muted) !important;
         }
 
         body {
@@ -140,6 +136,10 @@
             font-size: 1.3rem;
             margin-bottom: 16px;
         }
+
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
     </style>
 </head>
 <body>
@@ -152,8 +152,8 @@
                 <span class="fw-bold font-outfit">PIX - Joomla Content Plugin</span>
             </a>
             <div class="ms-auto d-flex align-items-center gap-3">
-                <a href="en/index.html" class="btn btn-sm btn-outline-secondary rounded-pill px-3 text-light">
-                    <i class="fa-solid fa-globe me-1"></i> EN
+                <a href="../index.html" class="btn btn-sm btn-outline-secondary rounded-pill px-3 text-light">
+                    <i class="fa-solid fa-globe me-1"></i> PT-BR
                 </a>
                 <a href="https://github.com/uzielweb/pix-joomla-content-plugin" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm rounded-pill px-3">
                     <i class="fa-brands fa-github me-1"></i> GitHub
@@ -167,44 +167,44 @@
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill mb-3 fw-bold">Joomla 4 / 5 / 6 Compatível</span>
-                    <h1 class="display-4 fw-extrabold mb-3">Gere QR Codes de Pagamentos PIX em Minutos</h1>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill mb-3 fw-bold">Joomla 4 / 5 / 6 Compatible</span>
+                    <h1 class="display-4 fw-extrabold mb-3">Generate PIX Payment QR Codes in Minutes</h1>
                     <p class="lead text-white mb-4">
-                        Um plugin de conteúdo leve e moderno para Joomla que converte códigos no formato <code>{pix:MOEDA|valor|mensagem}</code> em QR Codes de pagamento seguros, rápidos e responsivos.
+                        A lightweight and modern Joomla content plugin that converts shortcodes in the format <code>{pix:CURRENCY|amount|message}</code> into secure, fast, and responsive payment QR Codes.
                     </p>
                     <div class="d-flex gap-3">
-                        <a href="#doc-use" class="btn btn-pix px-4 py-3 rounded-pill">Como Usar</a>
-                        <a href="https://github.com/uzielweb/pix-joomla-content-plugin/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light px-4 py-3 rounded-pill">Baixar Versão 1.0.5</a>
+                        <a href="#doc-use" class="btn btn-pix px-4 py-3 rounded-pill">How to Use</a>
+                        <a href="https://github.com/uzielweb/pix-joomla-content-plugin/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light px-4 py-3 rounded-pill">Download v1.0.5</a>
                     </div>
                 </div>
                 
                 <!-- Interactive Simulator -->
                 <div class="col-lg-6">
                     <div class="glass-card p-4">
-                        <h3 class="mb-4 text-center font-outfit">Simulador e Preview em Tempo Real</h3>
+                        <h3 class="mb-4 text-center font-outfit">Real-Time Simulator & Live Preview</h3>
                         <!-- Shortcode input -->
                         <div class="mb-4">
-                            <label class="form-label text-muted small">Cole ou digite a tag do seu Artigo</label>
-                            <input type="text" id="sim-tag" class="form-control form-control-lg bg-dark text-white border-success text-center" value="{pix:150.00|Curso Joomla}" style="font-family: monospace; font-size: 1.2rem; letter-spacing: 0.5px;">
+                            <label class="form-label text-muted small">Paste or type your Article tag</label>
+                            <input type="text" id="sim-tag" class="form-control form-control-lg bg-dark text-white border-success text-center" value="{pix:150.00|Joomla Course}" style="font-family: monospace; font-size: 1.2rem; letter-spacing: 0.5px;">
                         </div>
 
                         <!-- Global Plugin Settings (Simulated) -->
                         <div class="mb-4">
                             <button class="btn btn-sm btn-outline-secondary w-100 text-light py-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseConfig" aria-expanded="false" aria-controls="collapseConfig">
-                                <i class="fa-solid fa-gears me-1"></i> Configurar Chave PIX (Simulação)
+                                <i class="fa-solid fa-gears me-1"></i> Configure PIX Key (Simulation)
                             </button>
                             <div class="collapse mt-3" id="collapseConfig">
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
-                                        <label class="form-label text-muted small">Chave PIX</label>
+                                        <label class="form-label text-muted small">PIX Key</label>
                                         <input type="text" id="sim-key" class="form-control form-control-sm bg-dark text-white border-secondary" value="contato@pontomega.com.br">
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label class="form-label text-muted small">Recebedor</label>
+                                        <label class="form-label text-muted small">Merchant</label>
                                         <input type="text" id="sim-name" class="form-control form-control-sm bg-dark text-white border-secondary" value="Uziel Almeida">
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label class="form-label text-muted small">Cidade</label>
+                                        <label class="form-label text-muted small">City</label>
                                         <input type="text" id="sim-city" class="form-control form-control-sm bg-dark text-white border-secondary" value="Sao Paulo">
                                     </div>
                                 </div>
@@ -214,12 +214,12 @@
                         <!-- Simulated Widget Rendering -->
                         <div class="simulated-container">
                             <div class="simulated-title" id="preview-title">PIX: BRL 150,00</div>
-                            <div class="simulated-desc" id="preview-desc">Curso Joomla</div>
+                            <div class="simulated-desc" id="preview-desc">Joomla Course</div>
                             <div class="simulated-qrcode" id="preview-qrcode">
                                 <!-- Generated Dynamically -->
                             </div>
                             <div class="pontomega-pix-button w-100">
-                                <button class="btn btn-primary w-100 py-2 font-outfit" onclick="copySimulatedCode()">Copiar Código PIX</button>
+                                <button class="btn btn-primary w-100 py-2 font-outfit" onclick="copySimulatedCode()">Copy PIX Code</button>
                             </div>
                         </div>
                     </div>
@@ -231,15 +231,15 @@
     <!-- Features Section -->
     <section class="py-5 border-top border-secondary">
         <div class="container">
-            <h2 class="text-center font-outfit fw-bold mb-5">Por que usar o PIX Content Plugin?</h2>
+            <h2 class="text-center font-outfit fw-bold mb-5">Why use the PIX Content Plugin?</h2>
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="glass-card p-4 h-100">
                         <div class="feature-icon">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
-                        <h4 class="font-outfit fw-bold">100% Seguro</h4>
-                        <p class="text-muted small">Sem requisições externas para gerar os QR Codes. O código é gerado offline no próprio navegador do cliente por segurança.</p>
+                        <h4 class="font-outfit fw-bold">100% Secure</h4>
+                        <p class="text-muted small">No external API calls to generate the QR Codes. The generation happens completely offline in the customer's browser for security.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -247,8 +247,8 @@
                         <div class="feature-icon">
                             <i class="fa-solid fa-code"></i>
                         </div>
-                        <h4 class="font-outfit fw-bold">Sem Dependências Pesadas</h4>
-                        <p class="text-muted small">Utiliza o moderno Web Asset Manager do Joomla 4/5/6 para carregar os scripts necessários sem poluir o cabeçalho.</p>
+                        <h4 class="font-outfit fw-bold">No Heavy Dependencies</h4>
+                        <p class="text-muted small">Uses Joomla's modern Web Asset Manager to load necessary scripts cleanly without polluting the header.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -256,8 +256,8 @@
                         <div class="feature-icon">
                             <i class="fa-solid fa-bolt"></i>
                         </div>
-                        <h4 class="font-outfit fw-bold">Extremamente Rápido</h4>
-                        <p class="text-muted small">Mapeamento direto por regex que converte os atalhos rapidamente durante o carregamento do artigo.</p>
+                        <h4 class="font-outfit fw-bold">Extremely Fast</h4>
+                        <p class="text-muted small">Direct regex mapping that converts shortcodes instantly during article loading.</p>
                     </div>
                 </div>
             </div>
@@ -269,44 +269,44 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <h2 class="font-outfit fw-bold mb-4">Guia Rápido de Uso</h2>
+                    <h2 class="font-outfit fw-bold mb-4">Quick Usage Guide</h2>
                     
-                    <h4 class="font-outfit mt-4 text-success"><i class="fa-solid fa-circle-check me-2"></i>Sintaxe Básica</h4>
-                    <p class="text-muted">Adicione a tag abaixo em qualquer artigo ou módulo personalizado do Joomla (a moeda BRL é o padrão e tornou-se opcional):</p>
-                    <pre><code>{pix:VALOR|IDENTIFICADOR}</code></pre>
-                    <p class="text-muted">Ou explicitando a moeda:</p>
-                    <pre><code>{pix:MOEDA|VALOR|IDENTIFICADOR}</code></pre>
+                    <h4 class="font-outfit mt-4 text-success"><i class="fa-solid fa-circle-check me-2"></i>Basic Syntax</h4>
+                    <p class="text-muted">Add the tag below inside any Joomla article or custom module (BRL currency is the default and is optional):</p>
+                    <pre><code>{pix:AMOUNT|IDENTIFIER}</code></pre>
+                    <p class="text-muted">Or explicitly stating the currency:</p>
+                    <pre><code>{pix:CURRENCY|AMOUNT|IDENTIFIER}</code></pre>
                     
-                    <h4 class="font-outfit mt-4 text-success"><i class="fa-solid fa-circle-info me-2"></i>Parâmetros da Tag</h4>
+                    <h4 class="font-outfit mt-4 text-success"><i class="fa-solid fa-circle-info me-2"></i>Tag Parameters</h4>
                     <table class="table table-dark table-hover border-secondary mt-3">
                         <thead>
                             <tr>
-                                <th>Parâmetro</th>
-                                <th>Descrição</th>
-                                <th>Exemplo</th>
+                                <th>Parameter</th>
+                                <th>Description</th>
+                                <th>Example</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>MOEDA</code></td>
-                                <td>Opcional. A moeda do pagamento. Caso não seja informada, assume <code>BRL</code> como padrão.</td>
+                                <td><code>CURRENCY</code></td>
+                                <td>Optional. Payment currency. Defaults to <code>BRL</code>.</td>
                                 <td><code>BRL</code></td>
                             </tr>
                             <tr>
-                                <td><code>VALOR</code></td>
-                                <td>O valor do pagamento (use ponto para separar decimais).</td>
+                                <td><code>AMOUNT</code></td>
+                                <td>The payment amount (use dot as decimal separator).</td>
                                 <td><code>890.00</code></td>
                             </tr>
                             <tr>
-                                <td><code>IDENTIFICADOR</code></td>
-                                <td>Mensagem de identificação do pagamento (sem caracteres especiais).</td>
+                                <td><code>IDENTIFIER</code></td>
+                                <td>Payment identification message (no special characters).</td>
                                 <td><code>RelogioTitanium</code></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h4 class="font-outfit mt-4 text-success"><i class="fa-solid fa-download me-2"></i>Servidor de Atualização</h4>
-                    <p class="text-muted">Este plugin possui suporte nativo para atualizações automáticas diretamente no painel do Joomla através da url configurada no manifesto:</p>
+                    <h4 class="font-outfit mt-4 text-success"><i class="fa-solid fa-download me-2"></i>Update Server</h4>
+                    <p class="text-muted">This plugin natively supports automatic updates directly in the Joomla dashboard via the URL configured in the manifest:</p>
                     <pre><code>https://raw.githubusercontent.com/uzielweb/pix-joomla-content-plugin/master/updates.xml</code></pre>
                 </div>
             </div>
@@ -316,7 +316,7 @@
     <!-- Footer -->
     <footer class="py-4 border-top border-secondary text-center text-muted small">
         <div class="container">
-            <p class="mb-0">Desenvolvido por <a href="https://www.pontomega.com.br" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-none fw-bold">PontoMega</a> &copy; 2026. Licença GPL v2.</p>
+            <p class="mb-0">Developed by <a href="https://www.pontomega.com.br" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-none fw-bold">PontoMega</a> &copy; 2026. GPL v2 License.</p>
         </div>
     </footer>
 
@@ -422,9 +422,9 @@
             }
             
             // Invalid tag styling
-            document.getElementById('preview-title').innerText = "Tag Inválida";
-            document.getElementById('preview-desc').innerText = "Use: {pix:VALOR|IDENTIFICADOR}";
-            qrcodeContainer.innerHTML = "<div class='text-danger text-center small p-4'><i class='fa-solid fa-triangle-exclamation fs-3 mb-2'></i><br>Aguardando tag válida...</div>";
+            document.getElementById('preview-title').innerText = "Invalid Tag";
+            document.getElementById('preview-desc').innerText = "Use: {pix:AMOUNT|IDENTIFIER}";
+            qrcodeContainer.innerHTML = "<div class='text-danger text-center small p-4'><i class='fa-solid fa-triangle-exclamation fs-3 mb-2'></i><br>Awaiting valid tag...</div>";
             document.querySelector('.simulated-container button').disabled = true;
         }
 
@@ -432,7 +432,7 @@
             navigator.clipboard.writeText(currentPayload).then(() => {
                 const button = document.querySelector('.simulated-container button');
                 const originalText = button.innerText;
-                button.innerText = "Copiado!";
+                button.innerText = "Copied!";
                 button.style.backgroundColor = "#008c32";
                 setTimeout(() => {
                     button.innerText = originalText;
