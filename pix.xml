@@ -15,10 +15,10 @@
         <folder>src</folder>
     </files>
     <languages>
-        <language tag="pt-BR">language/pt-BR/plg_content_pix.ini</language>
-        <language tag="pt-BR">language/pt-BR/plg_content_pix.sys.ini</language>
-        <language tag="en-GB">language/en-GB/plg_content_pix.ini</language>
-        <language tag="en-GB">language/en-GB/plg_content_pix.sys.ini</language>
+        <language tag="pt-BR">language/pt-BR/pt-BR.plg_content_pix.ini</language>
+        <language tag="pt-BR">language/pt-BR/pt-BR.plg_content_pix.sys.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.plg_content_pix.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.plg_content_pix.sys.ini</language>
     </languages>
     <media destination="plg_content_pix" folder="media">
         <folder>js</folder>
