@@ -21,6 +21,7 @@
         <language tag="en-GB">language/en-GB/plg_content_pix.sys.ini</language>
     </languages>
     <media destination="plg_content_pix" folder="media">
+        <folder>css</folder>
         <folder>js</folder>
     </media>
     <config>

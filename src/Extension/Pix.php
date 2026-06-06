@@ -26,14 +26,14 @@ class Pix extends CMSPlugin implements SubscriberInterface {
             return;
         }
 
-        $regex = '/(?:<pre[^>]*>)?\s*(?:<code[^>]*>)?\s*\{pix:([^|]+)\|([^|]+)\|([^}]+)\}\s*(?:<\/code>)?\s*(?:<\/pre>)?/i';
+        $regex = '/\{pix:([^|]+)\|([^|]+)\|([^}]+)\}/i';
 
         if (preg_match_all($regex, $row->text, $matches, PREG_SET_ORDER)) {
             foreach ($matches as $match) {
                 $fullTag = $match[0];
-                $currency = strip_tags($match[1]);
-                $amount = (float)strip_tags($match[2]);
-                $message = strip_tags($match[3]);
+                $currency = $match[1];
+                $amount = (float)$match[2];
+                $message = $match[3];
 
                 $html = $this->renderPix($amount, $message, $currency);
                 $row->text = str_replace($fullTag, $html, $row->text);
@@ -43,6 +43,9 @@ class Pix extends CMSPlugin implements SubscriberInterface {
     }
 
     private function renderPix($amount, $message, $currency = 'BRL') {
+        $wa = \Joomla\CMS\Factory::getApplication()->getDocument()->getWebAssetManager();
+        $wa->registerAndUseStyle('plg_content_pix', 'media/plg_content_pix/css/pix.css');
+
         $pixKey = $this->params->get('pix_key', '');
         $name   = $this->params->get('merchant_name', '');
         $city   = $this->params->get('merchant_city', '');
@@ -65,7 +68,7 @@ class Pix extends CMSPlugin implements SubscriberInterface {
             <div id="' . $uniqueId . '" class="pontomega-pix-qrcode"></div>
             
             <div class="pontomega-pix-button">
-                <button onclick="copyPixPayload(\'' . $payload . '\', this)" style="background:#00b140;color:white;border:none;padding:10px 15px;border-radius:6px;cursor:pointer;font-size:0.8rem;width:100%;font-weight:bold;">' . Text::_('PLG_CONTENT_PIX_TEXT_COPY_CODE') . '</button>
+                <button onclick="copyPixPayload(\'' . $payload . '\', this)" class="btn btn-primary">' . Text::_('PLG_CONTENT_PIX_TEXT_COPY_CODE') . '</button>
             </div>
             
             <script>

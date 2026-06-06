@@ -1,0 +1,34 @@
+.pontomega-pix-container {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    max-width: 300px;
+    margin: 20px auto;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: sans-serif;
+}
+
+.pontomega-pix-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.pontomega-pix-description {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.pontomega-pix-qrcode {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    min-height: 250px;
+}
+
+.pontomega-pix-button {
+    margin-top: 15px;
+}
