@@ -2,11 +2,11 @@
 
 [![Joomla Version](https://img.shields.io/badge/Joomla-4.x%20%7C%205.x%20%7C%206.x-blue.svg?style=flat-square)](https://joomla.org)
 [![License](https://img.shields.io/badge/license-GPL--2.0-green.svg?style=flat-square)](LICENSE)
-[![Latest Release](https://img.shields.io/badge/release-1.0.5-orange.svg?style=flat-square)](https://github.com/uzielweb/plg_content_pix/releases)
+[![Latest Release](https://img.shields.io/badge/release-1.0.5-orange.svg?style=flat-square)](https://github.com/uzielweb/pix-joomla-content-plugin/releases)
 
 A modern, standalone, and high-performance PIX payment shortcode integration for **Joomla 4, 5, and 6**. This plugin dynamically generates secure static PIX QR Codes directly inside your articles using a clean shortcode syntax.
 
-[![Simulador & Demonstração](https://img.shields.io/badge/Simulador%20%26%20Demonstra%C3%A7%C3%A3o-Acesse%20Aqui-00b140?style=for-the-badge&logo=qrcode&logoColor=white)](https://uzielweb.github.io/plg_content_pix/)
+[![Simulador & Demonstração](https://img.shields.io/badge/Simulador%20%26%20Demonstra%C3%A7%C3%A3o-Acesse%20Aqui-00b140?style=for-the-badge&logo=qrcode&logoColor=white)](https://uzielweb.github.io/pix-joomla-content-plugin/)
 
 ---
 
@@ -22,7 +22,7 @@ A modern, standalone, and high-performance PIX payment shortcode integration for
 
 ## 📦 Installation
 
-1. Download the latest release package from the [Releases](https://github.com/uzielweb/plg_content_pix/releases) page.
+1. Download the latest release package from the [Releases](https://github.com/uzielweb/pix-joomla-content-plugin/releases) page.
 2. In your Joomla Administrator panel, navigate to **System > Install > Extensions**.
 3. Upload the downloaded ZIP package.
 4. Go to **System > Manage > Plugins**, search for **"PIX - Joomla Content Plugin"** (under the `content` group) and enable it.

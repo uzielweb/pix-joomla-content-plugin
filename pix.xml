@@ -35,6 +35,6 @@
         </fields>
     </config>
     <updateservers>
-        <server type="extension" priority="1" name="plg_content_pix Update Server">https://raw.githubusercontent.com/uzielweb/plg_content_pix/master/updates.xml</server>
+        <server type="extension" priority="1" name="plg_content_pix Update Server">https://raw.githubusercontent.com/uzielweb/pix-joomla-content-plugin/master/updates.xml</server>
     </updateservers>
 </extension>
