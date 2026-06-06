@@ -179,26 +179,32 @@
                 <div class="col-lg-6">
                     <div class="glass-card p-4">
                         <h3 class="mb-4 text-center font-outfit">Simulador e Preview em Tempo Real</h3>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label text-muted small">Chave PIX</label>
-                                <input type="text" id="sim-key" class="form-control bg-dark text-white border-secondary" value="contato@pontomega.com.br">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label text-muted small">Nome do Recebedor</label>
-                                <input type="text" id="sim-name" class="form-control bg-dark text-white border-secondary" value="Uziel Almeida">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label text-muted small">Cidade</label>
-                                <input type="text" id="sim-city" class="form-control bg-dark text-white border-secondary" value="Sao Paulo">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label text-muted small">Valor (BRL)</label>
-                                <input type="number" id="sim-amount" class="form-control bg-dark text-white border-secondary" value="150.00" step="0.01">
-                            </div>
-                            <div class="col-12 mb-4">
-                                <label class="form-label text-muted small">Identificador / Mensagem</label>
-                                <input type="text" id="sim-msg" class="form-control bg-dark text-white border-secondary" value="Curso Joomla">
+                        <!-- Shortcode input -->
+                        <div class="mb-4">
+                            <label class="form-label text-muted small">Cole ou digite a tag do seu Artigo</label>
+                            <input type="text" id="sim-tag" class="form-control form-control-lg bg-dark text-white border-success text-center" value="{pix:150.00|Curso Joomla}" style="font-family: monospace; font-size: 1.2rem; letter-spacing: 0.5px;">
+                        </div>
+
+                        <!-- Global Plugin Settings (Simulated) -->
+                        <div class="mb-4">
+                            <button class="btn btn-sm btn-outline-secondary w-100 text-light py-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseConfig" aria-expanded="false" aria-controls="collapseConfig">
+                                <i class="fa-solid fa-gears me-1"></i> Configurar Chave PIX (Simulação)
+                            </button>
+                            <div class="collapse mt-3" id="collapseConfig">
+                                <div class="row">
+                                    <div class="col-md-4 mb-2">
+                                        <label class="form-label text-muted small">Chave PIX</label>
+                                        <input type="text" id="sim-key" class="form-control form-control-sm bg-dark text-white border-secondary" value="contato@pontomega.com.br">
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label class="form-label text-muted small">Recebedor</label>
+                                        <input type="text" id="sim-name" class="form-control form-control-sm bg-dark text-white border-secondary" value="Uziel Almeida">
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label class="form-label text-muted small">Cidade</label>
+                                        <input type="text" id="sim-city" class="form-control form-control-sm bg-dark text-white border-secondary" value="Sao Paulo">
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -374,28 +380,49 @@
         let currentPayload = "";
 
         function updateSimulatedWidget() {
+            const tagValue = document.getElementById('sim-tag').value.trim();
             const key = document.getElementById('sim-key').value;
             const name = document.getElementById('sim-name').value;
             const city = document.getElementById('sim-city').value;
-            const amount = document.getElementById('sim-amount').value;
-            const msg = document.getElementById('sim-msg').value;
 
-            // Update widget text
-            const formattedAmount = parseFloat(amount).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('preview-title').innerText = `PIX: BRL ${formattedAmount}`;
-            document.getElementById('preview-desc').innerText = msg;
+            // Regex to parse {pix:MOEDA|VALOR|MENSAGEM} or {pix:VALOR|MENSAGEM}
+            const regex = /\{pix:(?:([^|]+)\|)?([^|]+)\|([^}]+)\}/i;
+            const match = tagValue.match(regex);
 
-            // Generate payload
-            currentPayload = generatePixPayload(key, name, city, amount, msg);
-
-            // Re-render QRCode
             const qrcodeContainer = document.getElementById('preview-qrcode');
-            qrcodeContainer.innerHTML = "";
-            new QRCode(qrcodeContainer, {
-                text: currentPayload,
-                width: 200,
-                height: 200
-            });
+
+            if (match) {
+                const currency = match[1] ? match[1].trim() : 'BRL';
+                const amount = parseFloat(match[2]);
+                const msg = match[3] ? match[3].trim() : '';
+
+                if (!isNaN(amount)) {
+                    // Update widget text
+                    const formattedAmount = amount.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                    document.getElementById('preview-title').innerText = `PIX: ${currency} ${formattedAmount}`;
+                    document.getElementById('preview-desc').innerText = msg;
+
+                    // Generate payload
+                    currentPayload = generatePixPayload(key, name, city, amount, msg);
+
+                    // Re-render QRCode
+                    qrcodeContainer.innerHTML = "";
+                    new QRCode(qrcodeContainer, {
+                        text: currentPayload,
+                        width: 200,
+                        height: 200
+                    });
+                    
+                    document.querySelector('.simulated-container button').disabled = false;
+                    return;
+                }
+            }
+            
+            // Invalid tag styling
+            document.getElementById('preview-title').innerText = "Tag Inválida";
+            document.getElementById('preview-desc').innerText = "Use: {pix:VALOR|IDENTIFICADOR}";
+            qrcodeContainer.innerHTML = "<div class='text-danger text-center small p-4'><i class='fa-solid fa-triangle-exclamation fs-3 mb-2'></i><br>Aguardando tag válida...</div>";
+            document.querySelector('.simulated-container button').disabled = true;
         }
 
         function copySimulatedCode() {
@@ -412,7 +439,7 @@
         }
 
         // Add listeners for real-time updates
-        const inputs = ['sim-key', 'sim-name', 'sim-city', 'sim-amount', 'sim-msg'];
+        const inputs = ['sim-tag', 'sim-key', 'sim-name', 'sim-city'];
         inputs.forEach(id => {
             document.getElementById(id).addEventListener('input', updateSimulatedWidget);
         });
