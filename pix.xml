@@ -9,7 +9,7 @@
     <authorUrl>www.pontomega.com.br</authorUrl>
     <version>1.0.2</version>
     <description>PLG_CONTENT_PIX_DESCRIPTION</description>
-    <namespace>PontoMega\Plugin\Content\Pix</namespace>
+    <namespace path="src">PontoMega\Plugin\Content\Pix</namespace>
     <files>
         <folder plugin="pix">services</folder>
         <folder>src</folder>
