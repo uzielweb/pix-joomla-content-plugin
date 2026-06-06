@@ -26,12 +26,12 @@ class Pix extends CMSPlugin implements SubscriberInterface {
             return;
         }
 
-        $regex = '/\{pix:([^|]+)\|([^|]+)\|([^}]+)\}/i';
+        $regex = '/\{pix:(?:([^|]+)\|)?([^|]+)\|([^}]+)\}/i';
 
         if (preg_match_all($regex, $row->text, $matches, PREG_SET_ORDER)) {
             foreach ($matches as $match) {
                 $fullTag = $match[0];
-                $currency = $match[1];
+                $currency = !empty($match[1]) ? $match[1] : 'BRL';
                 $amount = (float)$match[2];
                 $message = $match[3];
 
