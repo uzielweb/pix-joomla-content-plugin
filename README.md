@@ -1,4 +1,4 @@
-# Joomla PIX Content Plugin (plg_content_pix)
+# PIX - Joomla Content Plugin
 
 A modern, standalone PIX payment integration for Joomla 4 and 5. This plugin allows you to easily render PIX QR codes within your articles using a simple shortcode syntax.
 
