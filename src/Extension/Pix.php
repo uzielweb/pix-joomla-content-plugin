@@ -26,14 +26,14 @@ class Pix extends CMSPlugin implements SubscriberInterface {
             return;
         }
 
-        $regex = '/\{pix:([^|]+)\|([^|]+)\|([^}]+)\}/i';
+        $regex = '/(?:<pre[^>]*>)?\s*(?:<code[^>]*>)?\s*\{pix:([^|]+)\|([^|]+)\|([^}]+)\}\s*(?:<\/code>)?\s*(?:<\/pre>)?/i';
 
         if (preg_match_all($regex, $row->text, $matches, PREG_SET_ORDER)) {
             foreach ($matches as $match) {
                 $fullTag = $match[0];
-                $currency = $match[1];
-                $amount = (float)$match[2];
-                $message = $match[3];
+                $currency = strip_tags($match[1]);
+                $amount = (float)strip_tags($match[2]);
+                $message = strip_tags($match[3]);
 
                 $html = $this->renderPix($amount, $message, $currency);
                 $row->text = str_replace($fullTag, $html, $row->text);
@@ -58,13 +58,13 @@ class Pix extends CMSPlugin implements SubscriberInterface {
         $scriptUrl = \Joomla\CMS\Uri\Uri::root(true) . '/media/plg_content_pix/js/qrcode.min.js';
 
         return '
-        <div class="pontomega-pix-container" style="border:1px solid #e0e0e0;border-radius:12px;padding:20px;text-align:center;max-width:300px;margin:20px auto;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.1);font-family:sans-serif;">
-            <div style="font-weight:bold;margin-bottom:10px;color:#333;">' . Text::sprintf('PLG_CONTENT_PIX_TEXT_PIX_AMOUNT', $currency . ' ' . $formattedAmount) . '</div>
-            <div style="font-size:0.85rem;color:#666;margin-bottom:15px;">' . htmlspecialchars($message) . '</div>
+        <div class="pontomega-pix-container">
+            <div class="pontomega-pix-title">' . Text::sprintf('PLG_CONTENT_PIX_TEXT_PIX_AMOUNT', $currency . ' ' . $formattedAmount) . '</div>
+            <div class="pontomega-pix-description">' . htmlspecialchars($message) . '</div>
             
-            <div id="' . $uniqueId . '" style="display: flex; justify-content: center; margin-bottom: 15px; min-height: 250px;"></div>
+            <div id="' . $uniqueId . '" class="pontomega-pix-qrcode"></div>
             
-            <div style="margin-top:15px;">
+            <div class="pontomega-pix-button">
                 <button onclick="copyPixPayload(\'' . $payload . '\', this)" style="background:#00b140;color:white;border:none;padding:10px 15px;border-radius:6px;cursor:pointer;font-size:0.8rem;width:100%;font-weight:bold;">' . Text::_('PLG_CONTENT_PIX_TEXT_COPY_CODE') . '</button>
             </div>
             
