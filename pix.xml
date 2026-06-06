@@ -7,7 +7,7 @@
     <license>GNU GPL v2</license>
     <authorEmail>contato@pontomega.com.br</authorEmail>
     <authorUrl>www.pontomega.com.br</authorUrl>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <description>PLG_CONTENT_PIX_DESCRIPTION</description>
     <namespace path="src">PontoMega\Plugin\Content\Pix</namespace>
     <files>
@@ -30,6 +30,7 @@
                 <field name="pix_key" type="text" label="PLG_CONTENT_PIX_FIELD_PIX_KEY_LABEL" description="PLG_CONTENT_PIX_FIELD_PIX_KEY_DESC" required="true" />
                 <field name="merchant_name" type="text" label="PLG_CONTENT_PIX_FIELD_MERCHANT_NAME_LABEL" description="PLG_CONTENT_PIX_FIELD_MERCHANT_NAME_DESC" />
                 <field name="merchant_city" type="text" label="PLG_CONTENT_PIX_FIELD_MERCHANT_CITY_LABEL" description="PLG_CONTENT_PIX_FIELD_MERCHANT_CITY_DESC" />
+                <field name="logo_url" type="media" label="PLG_CONTENT_PIX_FIELD_LOGO_URL_LABEL" description="PLG_CONTENT_PIX_FIELD_LOGO_URL_DESC" />
             </fieldset>
         </fields>
     </config>

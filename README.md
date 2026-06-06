@@ -2,7 +2,7 @@
 
 [![Joomla Version](https://img.shields.io/badge/Joomla-4.x%20%7C%205.x%20%7C%206.x-blue.svg?style=flat-square)](https://joomla.org)
 [![License](https://img.shields.io/badge/license-GPL--2.0-green.svg?style=flat-square)](LICENSE)
-[![Latest Release](https://img.shields.io/badge/release-1.0.4-orange.svg?style=flat-square)](https://github.com/uzielweb/plg_content_pix/releases)
+[![Latest Release](https://img.shields.io/badge/release-1.0.5-orange.svg?style=flat-square)](https://github.com/uzielweb/plg_content_pix/releases)
 
 A modern, standalone, and high-performance PIX payment shortcode integration for **Joomla 4, 5, and 6**. This plugin dynamically generates secure static PIX QR Codes directly inside your articles using a clean shortcode syntax.
 

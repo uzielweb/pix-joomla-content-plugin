@@ -49,6 +49,7 @@ class Pix extends CMSPlugin implements SubscriberInterface {
         $pixKey = $this->params->get('pix_key', '');
         $name   = $this->params->get('merchant_name', '');
         $city   = $this->params->get('merchant_city', '');
+        $logoUrl = $this->params->get('logo_url', '');
 
         if (empty($pixKey)) {
             return '<!-- PIX Plugin: ' . Text::_('PLG_CONTENT_PIX_ERROR_NOT_CONFIGURED') . ' -->';
@@ -58,6 +59,7 @@ class Pix extends CMSPlugin implements SubscriberInterface {
         $formattedAmount = number_format($amount, 2, ',', '.');
         $uniqueId = 'pix_' . substr(md5($payload . uniqid()), 0, 10);
         
+        $logoPath = !empty($logoUrl) ? \Joomla\CMS\Uri\Uri::root() . $logoUrl : '';
         $scriptUrl = \Joomla\CMS\Uri\Uri::root(true) . '/media/plg_content_pix/js/qrcode.min.js';
 
         return '
@@ -65,7 +67,10 @@ class Pix extends CMSPlugin implements SubscriberInterface {
             <div class="pontomega-pix-title">' . Text::sprintf('PLG_CONTENT_PIX_TEXT_PIX_AMOUNT', $currency . ' ' . $formattedAmount) . '</div>
             <div class="pontomega-pix-description">' . htmlspecialchars($message) . '</div>
             
-            <div id="' . $uniqueId . '" class="pontomega-pix-qrcode"></div>
+            <div class="pontomega-pix-qrcode-wrapper" style="position: relative; display: inline-block;">
+                <div id="' . $uniqueId . '" class="pontomega-pix-qrcode"></div>
+                ' . (!empty($logoPath) ? '<img src="' . htmlspecialchars($logoPath) . '" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 45px; height: 45px; border-radius: 6px; border: 3px solid #ffffff; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" />' : '') . '
+            </div>
             
             <div class="pontomega-pix-button">
                 <button onclick="copyPixPayload(\'' . $payload . '\', this)" class="btn btn-primary">' . Text::_('PLG_CONTENT_PIX_TEXT_COPY_CODE') . '</button>
@@ -77,7 +82,7 @@ class Pix extends CMSPlugin implements SubscriberInterface {
                         const el = document.getElementById("' . $uniqueId . '");
                         if (el) {
                             el.innerHTML = "";
-                            new QRCode(el, { text: "' . $payload . '", width: 250, height: 250 });
+                            new QRCode(el, { text: "' . $payload . '", width: 250, height: 250, correctLevel: QRCode.CorrectLevel.Q });
                         }
                     };
                     
